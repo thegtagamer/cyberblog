@@ -1,3 +1,3 @@
 import users from './users';
-import sessoin from './session';
+import session from './session';
 import post from './post';

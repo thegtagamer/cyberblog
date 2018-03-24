@@ -33,11 +33,22 @@ router.post('/login', async (req, res) => {
 				return res.status(401).send({ success: false, error: 'Incorrect password'});
 			}
 		}else{
-			return res.send(404).send({ success: false, error: 'Username doesn\'t exist'});
+			return res.status(404).send({ success: false, error: 'Username doesn\'t exist'});
 		}
 	}catch(e){
 		return res.status(500).send({ success: false, error: 'Internal server error' });
 	}
 });
+
+router.get('/:username', async (req, res) => {
+	const user = await UserModel.findOne({ username: req.params.username }, { _id: false, password: false}).exec();
+	console.log(user);
+	if(user){
+		return res.send({ success: true, data: user });
+	}
+	return res.send({ success: false, error: 'Incorrect username' });
+});
+
+
 
 export default router;

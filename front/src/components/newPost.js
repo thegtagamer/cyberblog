@@ -1,14 +1,36 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ReactQuill from 'react-quill'; 
 
 class NewPost extends Component {
   render() {
     return (
-      <div>
-        <input type="text" placeholder="Title" onChange={this.handleTitleChange.bind(this)}/>
-        <input type="text" placeholder="Body" onChange={this.handleBodyChange.bind(this)}/>
-        <button onClick={this.submit.bind(this)}>submit</button>
-      </div>
+      <div className="col-md-12">
+       <h2>Write a new article</h2>
+      
+          <div className="form-area">  
+              
+                <br styles="clear:both" />
+                <div className="form-group">
+                <input type="text" className="form-control" placeholder="What would you like to call me?" onChange={this.handleTitleChange.bind(this)}/>
+                </div>
+               
+                <div className="form-group">
+                <ReactQuill 
+                  onChange={this.handleBodyChange.bind(this)} value={this.state.body}/>
+
+                </div>
+              
+
+                <button id="submit" name="submit" className="btn btn-lg btn-primary btn-block" onClick={this.submit.bind(this)}>submit</button>
+                  
+               
+             
+          </div>
+        </div>
+
+
+     
     );
   }
 
@@ -25,7 +47,8 @@ class NewPost extends Component {
   }
 
   handleBodyChange(e){
-    this.setState({ body: e.target.value });
+    this.setState({ body: e });
+    console.log(this.state.body)
   }
 
   async submit(){

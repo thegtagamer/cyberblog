@@ -6,7 +6,7 @@ class Post extends Component{
     return (
       <div>
         title: { this.state.title }<br />
-        body: { this.state.body }
+        body: <div dangerouslySetInnerHTML={{__html: this.state.body}} />
       </div>
     );
   }

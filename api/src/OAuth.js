@@ -38,6 +38,7 @@ async function findToken (token) {
 export async function OAuth(req, res, next){
 	try{
 		const checkToken = await findToken(req.headers.authorization.split(" ")[1]);
+		console.log(checkToken);
 		if(checkToken.success){
 			req.userId = checkToken.userId;
 			return next();

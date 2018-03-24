@@ -4,11 +4,11 @@ import axios from 'axios';
 class Login extends Component {
   render() {
     return (
-      <div>
+      <div className="form-signin">
         <h1>Login</h1>
-        <input type="text" placeholder="Username" onChange={this.handleUsernameChange.bind(this)}/>
-        <input type="password" placeholder="password" onChange={this.handlePasswordChange.bind(this)}/>
-        <button onClick={this.login.bind(this)}>Login</button>
+        <input type="text" className="form-control" placeholder="Username" onChange={this.handleUsernameChange.bind(this)}/>
+        <input type="password" className="form-control" placeholder="password" onChange={this.handlePasswordChange.bind(this)}/>
+        <button className="btn btn-lg btn-primary btn-block" onClick={this.login.bind(this)}>Login</button>
         { this.state.error }
       </div>
     );
